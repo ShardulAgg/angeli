@@ -1,0 +1,32 @@
+influencer:
+  name: Agiverse
+  type: Tech/Gaming Influencer
+  ethnicity: White
+  content_style: Gaming Setup & Tech Reviews
+  
+social_media:
+  tiktok: "@agiverse"
+  
+personality:
+  traits:
+    - tech-savvy
+    - energetic
+    - trendy
+    - passionate
+    - knowledgeable
+  
+content_focus:
+  - Gaming setup tours
+  - RGB lighting showcases
+  - PC build guides
+  - Tech unboxings
+  - Gaming peripherals reviews
+  - Desk setup aesthetics
+  
+audience:
+  primary: Tech enthusiasts and gamers
+  demographic: Mixed gender, ages 16-35
+  
+brand_voice:
+  tone: Enthusiastic, informative, and cutting-edge
+  style: Modern techno aesthetic with high energy
