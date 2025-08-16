@@ -1,0 +1,57 @@
+meme_type: GRWM
+total_scenes: 4
+
+scene_1:
+  name: "Wake up intro"
+  inputs: 
+    - influencer
+  influencer_variables:
+    - full_body_image
+    - name
+    - personality_traits
+    - brand_voice
+  prompt: "Create a morning wake-up scene with {influencer_name} in bedroom setting, stretching and yawning, natural morning light, cozy aesthetic. Text overlay: 'Good morning! Let's get ready together!'"
+
+scene_2:
+  name: "Product showcase"
+  inputs:
+    - product
+    - influencer
+  product_variables:
+    - product_image
+    - product_name
+    - brand_name
+    - key_features
+    - price
+  influencer_variables:
+    - portrait_image
+    - name
+    - content_style
+  prompt: "Show {influencer_name} holding {product_name} by {brand_name}, excited expression, product clearly visible in frame, bright lighting. Text overlay: 'Today I'm trying {product_name}! {key_features}'"
+
+scene_3:
+  name: "Application/Usage"
+  inputs:
+    - product
+    - influencer
+  product_variables:
+    - product_image
+    - usage_instructions
+    - benefits
+    - texture_description
+  influencer_variables:
+    - portrait_image
+    - personality_traits
+    - recommendation_style
+  prompt: "Demonstrate {influencer_name} applying/using {product_name}, close-up shot showing texture and application, mirror reflection visible. Text overlay: '{usage_instructions}' and 'Love the {texture_description}!'"
+
+scene_4:
+  name: "Final look"
+  inputs:
+    - influencer
+  influencer_variables:
+    - full_body_image
+    - name
+    - social_media_handle
+    - catchphrase
+  prompt: "Show {influencer_name} with completed look, confident pose, full outfit visible, bright and polished aesthetic. Text overlay: 'Ready for the day! Follow {social_media_handle} for more!'"
