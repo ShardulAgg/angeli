@@ -10,8 +10,8 @@ client = UploadPostClient(api_key=api_key)
 
 async def push_content(video_path:str, title:str):
     response = client.upload_video(
-    video_path="/path/to/video.mp4",
-    title="My Awesome Video",
+    video_path=video_path,
+    title=title,
     user="angeli",
     platforms=["instagram"]
     )
