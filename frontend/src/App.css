@@ -64,22 +64,124 @@ body::after {
   align-items: center;
 }
 
+.hero-section {
+  padding: 100px 20px 120px;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(180deg, 
+    var(--bg-white) 0%, 
+    rgba(255,0,153,0.02) 50%, 
+    var(--bg-white) 100%);
+}
+
+.hero-badge {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  color: var(--text-primary);
+  opacity: 0.4;
+  margin-bottom: 40px;
+}
+
+.hero-title {
+  margin-bottom: 30px;
+}
+
+.hero-title span {
+  display: block;
+}
+
+.hero-small {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.4em;
+  color: var(--text-primary);
+  opacity: 0.5;
+  margin-bottom: 10px;
+}
+
+.hero-main {
+  font-family: 'Playfair Display', serif;
+  font-size: 8rem;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.hero-gradient {
+  font-family: 'Playfair Display', serif;
+  font-size: 9rem;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.05em;
+  line-height: 0.85;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: pulse-gradient 3s ease-in-out infinite;
+}
+
+@keyframes pulse-gradient {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.hero-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--text-primary);
+  opacity: 0.6;
+  margin-bottom: 60px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--accent-neon);
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  opacity: 0.4;
+}
+
 .manifesto {
-  margin-bottom: 100px;
+  margin-top: 80px;
   text-align: center;
   width: 100%;
   padding: 80px 20px;
   background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(250,250,248,1) 50%, rgba(255,255,255,0) 100%);
-}
-
-.manifesto-intro {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--text-primary);
-  margin-bottom: 60px;
-  opacity: 0.4;
 }
 
 .manifesto-text {
@@ -179,28 +281,24 @@ body::after {
 }
 
 .product-form h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 7rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
   font-weight: 400;
-  font-style: italic;
   margin-bottom: 20px;
-  margin-top: 80px;
+  margin-top: 0;
   text-align: center;
-  letter-spacing: -0.05em;
+  letter-spacing: 0.3em;
   line-height: 1;
   color: var(--text-primary);
   text-transform: uppercase;
   position: relative;
+  opacity: 0.3;
 }
 
 .product-form h2 span {
-  display: block;
-  font-size: 6rem;
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-top: 0;
+  display: inline;
+  font-size: 2rem;
+  color: var(--text-primary);
 }
 
 .form-description {
@@ -393,6 +491,27 @@ body::after {
 @media (max-width: 768px) {
   .product-form-container {
     padding: 20px;
+  }
+  
+  .hero-section {
+    padding: 60px 20px 80px;
+  }
+  
+  .hero-main {
+    font-size: 4rem;
+  }
+  
+  .hero-gradient {
+    font-size: 4.5rem;
+  }
+  
+  .hero-stats {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
   }
   
   .product-form h2 {

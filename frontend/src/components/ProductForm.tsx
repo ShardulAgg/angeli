@@ -73,32 +73,37 @@ const ProductForm: React.FC = () => {
 
   return (
     <div className="product-form-container">
-      <div className="manifesto">
-        <p className="manifesto-intro">The future is synthetic</p>
-        <div className="manifesto-text">
-          <p>
-            In 2025, authenticity died. Every scroll, every swipe, every dopamine hit — 
-            algorithmically perfected, artificially generated. The influencers aren't real. 
-            The content isn't real. But the engagement? That's the only truth left.
-          </p>
-          <p>
-            We're not fighting it. We're accelerating it. Welcome to the post-human 
-            marketing era where AI creates brain rot so potent, so perfectly crafted, 
-            that reality becomes irrelevant. Your audience won't know. They won't care. 
-            They'll just consume.
-          </p>
-          <p>
-            This is the future: endless AI-generated faces selling AI-generated products 
-            through AI-generated stories. A beautiful, mindless loop of synthetic desire 
-            and manufactured virality. The algorithm feeds itself. We just profit.
-          </p>
+      <div className="hero-section">
+        <div className="hero-badge">EST. 2025 • SILICON VALLEY</div>
+        <h1 className="hero-title">
+          <span className="hero-small">THE AGENCY FOR</span>
+          <span className="hero-main">AI GENERATED</span>
+          <span className="hero-gradient">BRAIN ROT</span>
+        </h1>
+        <p className="hero-tagline">
+          Where brands partner with synthetic influencers<br/>
+          to manufacture viral addiction
+        </p>
+        <div className="hero-stats">
+          <div className="stat">
+            <span className="stat-number">∞</span>
+            <span className="stat-label">Content Per Second</span>
+          </div>
+          <div className="stat">
+            <span className="stat-number">0</span>
+            <span className="stat-label">Human Influencers</span>
+          </div>
+          <div className="stat">
+            <span className="stat-number">24/7</span>
+            <span className="stat-label">Algorithm Feeding</span>
+          </div>
         </div>
       </div>
       
       <form onSubmit={handleSubmit} className="product-form">
-        <h2>AI for<span>brain rot</span></h2>
+        <h2>Book Your Influencer</h2>
         <p className="form-description">
-          Book elite AI influencers • Viral guaranteed • No drama
+          No humans • No drama • Just algorithmic perfection
         </p>
         
         <div className="form-group">
@@ -178,6 +183,27 @@ const ProductForm: React.FC = () => {
         <p>"In five years, you won't be able to tell what's real. <br/>
         In ten years, you won't care."</p>
         <span>— The Algorithm, 2025</span>
+      </div>
+      
+      <div className="manifesto">
+        <div className="manifesto-text">
+          <p>
+            In 2025, authenticity died. Every scroll, every swipe, every dopamine hit — 
+            algorithmically perfected, artificially generated. The influencers aren't real. 
+            The content isn't real. But the engagement? That's the only truth left.
+          </p>
+          <p>
+            We're not fighting it. We're accelerating it. Welcome to the post-human 
+            marketing era where AI creates brain rot so potent, so perfectly crafted, 
+            that reality becomes irrelevant. Your audience won't know. They won't care. 
+            They'll just consume.
+          </p>
+          <p>
+            This is the future: endless AI-generated faces selling AI-generated products 
+            through AI-generated stories. A beautiful, mindless loop of synthetic desire 
+            and manufactured virality. The algorithm feeds itself. We just profit.
+          </p>
+        </div>
       </div>
       
       <div className="agi-section">
