@@ -368,14 +368,16 @@ Create a storyboard that:
                 if part.inline_data:
                     # Save the generated image
                     image_data = part.inline_data.data
-                    with open(f"{output_dir}/storyboard_{i+1}.png", "wb") as f:
+                    with open(f"{output_dir}/storyboard.png", "wb") as f:
                         f.write(image_data)
-                    print(f"Saved image: storyboard_{i+1}.png")
+                    print(f"Saved image: storyboard.png")
                     break
                     
         except Exception as e:
             print(f"Error generating image for scene {i+1}: {e}")
         break
+
+    return storyboard_items, os.path.join(output_dir, "storyboard.png")
 
 
 if __name__ == "__main__":
