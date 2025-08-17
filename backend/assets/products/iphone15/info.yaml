@@ -1,0 +1,107 @@
+product:
+  name: iPhone 15
+  brand: Apple
+  category: Smartphone
+  model: iPhone 15
+  price_range: Premium ($799+)
+  release_year: 2023
+
+features:
+  key_features:
+    - Dynamic Island
+    - 48MP Main Camera
+    - Action Button
+    - USB-C connector
+    - A16 Bionic chip
+    - Ceramic Shield front
+    - Water resistant (IP68)
+  
+  camera:
+    - 48MP Main camera with 2x Telephoto
+    - 12MP Ultra Wide camera
+    - Portrait mode with Focus and Depth Control
+    - 4K video recording
+    - Cinematic mode
+  
+  colors:
+    - Pink
+    - Yellow
+    - Green
+    - Blue
+    - Black
+
+target_audience:
+  primary: Tech-savvy consumers and Apple ecosystem users
+  demographics:
+    - Ages 18-45
+    - Middle to high income
+    - Early adopters and tech enthusiasts
+    - Content creators and professionals
+  
+  use_cases:
+    - Photography and videography
+    - Social media content creation
+    - Professional communication
+    - Gaming and entertainment
+    - Productivity and work
+
+marketing_angles:
+  lifestyle:
+    - Capture life's moments in stunning detail
+    - Stay connected with those who matter most
+    - Express your creativity
+    - Professional-grade camera in your pocket
+  
+  technical:
+    - Most advanced iPhone camera system
+    - All-day battery life
+    - Lightning-fast performance
+    - Durable design built to last
+  
+  emotional:
+    - Innovation and cutting-edge technology
+    - Premium quality and status
+    - Creativity and self-expression
+    - Connection and communication
+
+content_themes:
+  photography:
+    - Camera upgrade reveals
+    - Before/after photo comparisons
+    - Portrait mode demonstrations
+    - Night mode capabilities
+  
+  lifestyle:
+    - Day in the life content
+    - Unboxing and first impressions
+    - Color matching with outfits
+    - Productivity and organization
+  
+  tech_features:
+    - Dynamic Island interactions
+    - Action Button customization
+    - USB-C convenience
+    - Battery life tests
+
+viral_potential:
+  trends:
+    - iPhone 15 camera test
+    - Dynamic Island tricks
+    - Action Button hacks
+    - Color personality test
+    - Photo dump with new camera
+  
+  challenges:
+    - 48MP vs old phone camera
+    - Portrait mode glow up
+    - Action Button speed test
+    - One day with iPhone 15
+
+brand_voice:
+  tone: Premium, innovative, user-friendly
+  style: Clean, modern, aspirational
+  values:
+    - Innovation
+    - Quality
+    - Creativity
+    - Connection

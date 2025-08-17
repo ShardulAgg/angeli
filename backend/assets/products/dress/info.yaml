@@ -1,0 +1,108 @@
+product:
+  name: Stylish Dress
+  brand: Fashion Brand
+  category: Women's Fashion/Dress
+  model: Designer Dress
+  price_range: Mid-range ($40-120)
+  release_year: 2023
+
+features:
+  key_features:
+    - Premium quality dress
+    - High-quality fabric materials
+    - Stylish and fashionable design
+    - Versatile and wearable
+    - Comfortable and breathable fabric
+    - Beautiful colors and patterns
+    - Flattering fit and silhouette
+  
+  design:
+    - Elegant and modern styling
+    - Contemporary fashion elements
+    - Sophisticated patterns
+    - Trendy design details
+    - Versatile aesthetic
+  
+  variants:
+    - Multiple color options
+    - Various sizes available
+    - Limited edition releases
+    - Seasonal collections
+    - Designer collaborations
+
+target_audience:
+  primary: Fashion-conscious women
+  demographics:
+    - Ages 18-45
+    - Fashion enthusiasts
+    - Working professionals
+    - Style-conscious consumers
+  
+  use_cases:
+    - Everyday fashion and style
+    - Professional occasions
+    - Social events and parties
+    - Gift giving
+    - Personal style expression
+
+marketing_angles:
+  lifestyle:
+    - Express your personal style
+    - Elevate your wardrobe
+    - Fashion meets comfort
+    - Stand out with confidence
+  
+  community:
+    - Connect with fashion lovers
+    - Part of the style community
+    - Share your fashion journey
+    - Inspire others with your look
+  
+  emotional:
+    - Confidence and empowerment
+    - Elegance and sophistication
+    - Self-expression and individuality
+    - Feel beautiful and comfortable
+
+content_themes:
+  fashion:
+    - Style inspiration
+    - Trend spotlights
+    - Fashion tips and tricks
+    - Seasonal lookbooks
+  
+  lifestyle:
+    - Outfit coordination
+    - Professional styling
+    - Event fashion
+    - Style transformations
+  
+  community:
+    - Fashion feedback
+    - Style discussions
+    - Outfit ratings
+    - Fashion challenges
+
+viral_potential:
+  trends:
+    - Dress outfit of the day
+    - Style personality test
+    - Fashion quiz challenge
+    - Wardrobe collection tour
+    - Style transformation
+  
+  challenges:
+    - Favorite dress styling
+    - Fashion trivia challenge
+    - Style preference picker
+    - Fashion trend prediction
+    - Dream wardrobe board
+
+brand_voice:
+  tone: Elegant, confident, fashion-forward
+  style: Sophisticated, stylish, inspiring
+  values:
+    - Style
+    - Quality
+    - Confidence
+    - Authenticity
