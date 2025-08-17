@@ -4,3 +4,4 @@ python-multipart==0.0.9
 openai==1.99.7
 google-genai==1.30.0
 pillow==11.1.0
+upload_post 
