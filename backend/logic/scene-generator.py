@@ -111,6 +111,44 @@ def get_product_image_path(product_name: str, image_name: str = None) -> str:
     return image_path
 
 
+def create_product_data_from_form(product_name: str, brand_name: str, brand_personality: str, meme_type: str) -> Dict[str, Any]:
+    """Create product data structure from form parameters.
+    
+    Args:
+        product_name: Name of the product
+        brand_name: Name of the brand
+        brand_personality: Personality traits of the brand
+        meme_type: Type of meme to generate
+        
+    Returns:
+        Dictionary containing product information in expected format
+    """
+    return {
+        'product': {
+            'name': product_name,
+            'brand': brand_name,
+            'category': 'product'
+        },
+        'features': {
+            'key_features': [f"High-quality {product_name}", "Trendy design", "Perfect for content creation"]
+        },
+        'marketing_angles': {
+            'lifestyle': [f"Perfect for {meme_type} content", "Trendy and stylish", "Content creator approved"],
+            'technical': ["Premium quality", "Durable design"],
+            'emotional': ["Express yourself", "Feel confident", "Stand out"]
+        },
+        'content_themes': {
+            'lifestyle': [f"{meme_type} content", "Daily routine", "Style showcase"],
+            'entertainment': ["Fun moments", "Creative content", "Viral potential"]
+        },
+        'viral_potential': {
+            'trends': [f"{meme_type} trend", "Product showcase", "Lifestyle content"],
+            'challenges': [f"{brand_name} challenge", f"{product_name} styling", "Creative showcase"]
+        },
+        'brand_personality': brand_personality
+    }
+
+
 def create_personalized_storyboard_prompt(influencer_data: Dict[str, Any], product_data: Dict[str, Any]) -> str:
     """Create a personalized storyboard system prompt based on influencer and product data."""
     
@@ -142,8 +180,11 @@ def create_personalized_storyboard_prompt(influencer_data: Dict[str, Any], produ
     viral_trends = ", ".join(product_data.get('viral_potential', {}).get('trends', []))
     viral_challenges = ", ".join(product_data.get('viral_potential', {}).get('challenges', []))
     
+    # Get brand personality from product data
+    brand_personality_text = product_data.get('brand_personality', 'fun and engaging')
+    
     return f"""
-You are a viral meme storyboard expert creating content for {influencer_name}.
+You are a viral meme storyboard expert creating {', '.join(content_themes[:2])} content for {influencer_name}.
 
 Influencer Profile:
 - Type: {influencer_data.get('influencer', {}).get('type', 'Influencer')}
@@ -153,25 +194,30 @@ Influencer Profile:
 - Brand Voice: {brand_voice_tone}, {brand_voice_style}
 - Target Audience: {influencer_data.get('audience', {}).get('primary', 'general audience')}
 
-Product Profile:
-- Name: {product_name}
+Product & Brand Profile:
+- Product: {product_name}
+- Brand: {product_data.get('product', {}).get('brand', 'Brand')}
+- Brand Personality: {brand_personality_text}
 - Category: {product_category}
 - Key Features: {key_features}
 - Marketing Angles: {', '.join(lifestyle_angles[:3])}
 - Viral Trends: {viral_trends}
 - Content Themes: {', '.join(content_themes[:5])}
 
-Create a storyboard for a meme that:
-1. Authentically showcases {product_name} through {influencer_name}'s unique lens
-2. Leverages {influencer_name}'s {content_style} expertise
-3. Incorporates relevant product features naturally
-4. Taps into current viral trends and challenges
-5. Appeals to both {influencer_name}'s audience and {product_name}'s target market
-6. Creates an engaging 8-second video with exactly 3 scenes
-7. Feels genuine to {influencer_name}'s established persona
+Create a storyboard for a {', '.join(content_themes[:1])} meme that:
+1. Authentically showcases {product_name} from {product_data.get('product', {}).get('brand', 'the brand')} through {influencer_name}'s unique lens
+2. Reflects the brand's {brand_personality_text} personality
+3. Leverages {influencer_name}'s {content_style} expertise
+4. Incorporates relevant product features naturally in a {', '.join(content_themes[:1])} format
+5. Taps into current viral trends and challenges
+6. Appeals to both {influencer_name}'s audience and the brand's target market
+7. Creates an engaging 8-second video with exactly 3 scenes
+8. Feels genuine to {influencer_name}'s established persona
+9. Embodies the {brand_personality_text} brand personality throughout
 
 Consider these viral opportunities: {viral_challenges}
 Focus on these content angles: {', '.join(content_themes[:3])}
+Meme Style: Emphasize {', '.join(content_themes[:1])} elements that showcase both the product and brand personality
 """
 
 STORYBOARD_OUTPUT_INSTRUCTION = """
@@ -199,24 +245,33 @@ IMPORTANT:
 GENAI_API_KEY = os.getenv("GENAI_API_KEY", "")
 
 
-def generate_storyboard_scenes_gemini(influencer_name: str,
-                                      product_name: str):
+def generate_storyboard_scenes_gemini(product_image,
+                                      product_name: str,
+                                      brand_name: str,
+                                      brand_personality: str,
+                                      influencer_name: str,
+                                      meme_type: str):
     """Generate storyboard scenes and create images using Gemini.
     
     Args:
-        influencer_name: Name of the influencer
+        product_image: Uploaded product image file
         product_name: Name of the product for the storyboard
+        brand_name: Name of the brand
+        brand_personality: Personality traits of the brand
+        influencer_name: Name of the influencer
+        meme_type: Type of meme to generate
     """
     
-    # Load influencer and product information
+    # Load influencer information (still needed for image)
     try:
         influencer_data = load_influencer_info(influencer_name)
         influencer_image_path = get_influencer_image_path(influencer_name, "full_body")
-        product_data = load_product_info(product_name)
-        product_image_path = get_product_image_path(product_name)
     except (FileNotFoundError, ValueError) as e:
-        print(f"Error loading data: {e}")
+        print(f"Error loading influencer data: {e}")
         return
+    
+    # Create product data from form parameters
+    product_data = create_product_data_from_form(product_name, brand_name, brand_personality, meme_type)
     
     client = genai.Client(api_key=GENAI_API_KEY)
 
@@ -269,7 +324,14 @@ Create a storyboard that:
         storyboard_items.append(lines)
 
     # Load images for Gemini
-    product_img = PIL.Image.open(product_image_path)
+    # Handle product image as uploaded file
+    if hasattr(product_image, 'read'):
+        # If it's a file-like object, read it
+        product_img = PIL.Image.open(product_image)
+    else:
+        # If it's already a PIL Image or path
+        product_img = product_image if isinstance(product_image, PIL.Image.Image) else PIL.Image.open(product_image)
+    
     influencer_img = PIL.Image.open(influencer_image_path)
 
     # Create output directory if it doesn't exist
@@ -319,15 +381,19 @@ Create a storyboard that:
 if __name__ == "__main__":
     # Example usage - replace with your actual values
     influencer_name = "angeli"  # or "agiverse"
-    product_name = "dress"  # matches directory name
+    product_name = "dress"
+    brand_name = "FashionBrand"
+    brand_personality = "trendy, youthful, and confident"
+    meme_type = "GRWM"  # Get Ready With Me
+    
+    # For testing, you would need to provide an actual image file
+    product_image = open("../assets/products/dress/images/product.png", "rb")
     
     generate_storyboard_scenes_gemini(
+        product_image=product_image,
+        product_name=product_name,
+        brand_name=brand_name,
+        brand_personality=brand_personality,
         influencer_name=influencer_name,
-        product_name=product_name
+        meme_type=meme_type
     )
-
-# prompts = [
-#     "**Description: Angeli is in her bedroom, makeup already partially done. She's wearing pajamas and messy hair. Her room has a generally clean, aesthetic vibe. A shelf in the background has some of her favorite things, like plants, books, and subtle One Piece figurines.Character Expression: Playful exasperation. She looks at the camera with a slight eye roll and a small, amused smile, like she's about to do something a little silly.Visual Effects: Text overlay: \"Me every morning:\" with a sparkly, handwritten-style font that's on brand for Angeli. A quick, gentle zoom in on her face.**",
-#     "**Description: Quick montage. Angeli rapidly changes into a casual outfit featuring One Piece merchandise: A One Piece graphic tee (maybe Luffy or the Straw Hat Jolly Roger), comfy joggers, and sneakers. Each piece of clothing is shown briefly but clearly.Character Expression: Focused, slightly hurried but still enjoying the process. A confident smirk as she puts on the tee.Visual Effects: Fast-paced, energetic transitions between outfit pieces. Sound effect: quick whoosh noises. A highlight or subtle glow effect around the One Piece graphic on the t-shirt as she puts it on. Text overlay: \"deciding what to wear to finally find the One Piece\" (handwritten-style font again).**",
-#     "**Description: Angeli strikes a confident pose in front of a mirror, now fully dressed in the One Piece tee, joggers, and sneakers. She's doing a quick \"check yourself out\" move.Character Expression: Big, confident smile. She winks at the camera. She grabs a straw hat off a hook by her mirror and places it on her head.Visual Effects: A shimmering filter briefly washes over the scene. Text overlay: \"Adventure awaits! \" and a link to the One Piece merch website (or a swipe up arrow). A cartoon treasure chest opens and shines briefly in the corner of the screen. Final shot lingers for a beat before the video ends.**Justification:***   **Authentically showcases One Piece Merchandise:** The whole video revolves around wearing One Piece apparel, highlighting the t-shirt as a key item. The subtle background figurines cater to collectors.*   **Leverages Angeli's GRWM Expertise:**",
-# ]
