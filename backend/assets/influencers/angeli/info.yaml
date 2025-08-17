@@ -1,7 +1,7 @@
 influencer:
   name: Angeli
   type: Lifestyle Influencer
-  ethnicity: Asian American
+  ethnicity: White
   content_style: GRWM (Get Ready With Me)
   
 social_media:
@@ -17,14 +17,15 @@ personality:
   
 content_focus:
   - GRWM videos
+  - Viral Tiktok or Instagram Videos and Trends
+  - Memes
   - Lifestyle content
   - Fashion and beauty
-  - Daily routines
-  - Product recommendations
+  - Daily routines and Product recommendations
   
 audience:
   primary: Young adults interested in lifestyle and beauty content
-  demographic: Primarily female, ages 16-30
+  demographic: Both genders, young adults, Gen Z, ages 18-28
   
 brand_voice:
   tone: Friendly, conversational, and inspiring
