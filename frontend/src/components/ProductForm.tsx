@@ -46,7 +46,7 @@ const ProductForm: React.FC = () => {
     submitData.append('personality', formData.personality);
 
     try {
-      const response = await fetch('http://localhost:8000/api/submit-product', {
+      const response = await fetch('http://localhost:8005/api/generate_scene', {
         method: 'POST',
         body: submitData
       });
