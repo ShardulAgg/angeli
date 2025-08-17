@@ -7,6 +7,10 @@ from typing import List, Dict, Any
 from google import genai
 from google.genai import types
 import PIL.Image
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 abs_path = os.path.dirname(os.path.abspath(__file__))
 ASSETS_DIR = os.path.join(abs_path, "..", "assets")
@@ -242,7 +246,8 @@ IMPORTANT:
 
 
 """
-GENAI_API_KEY = os.getenv("GENAI_API_KEY", "")
+# Get GENAI_API_KEY from environment variables
+GENAI_API_KEY = os.getenv("GENAI_API_KEY")
 
 
 def generate_storyboard_scenes_gemini(product_image,
@@ -272,6 +277,10 @@ def generate_storyboard_scenes_gemini(product_image,
     
     # Create product data from form parameters
     product_data = create_product_data_from_form(product_name, brand_name, brand_personality, meme_type)
+    
+    # Check if API key is available
+    if not GENAI_API_KEY:
+        raise ValueError("GENAI_API_KEY is not set in environment variables. Please check your .env file.")
     
     client = genai.Client(api_key=GENAI_API_KEY)
 
@@ -324,13 +333,21 @@ Create a storyboard that:
         storyboard_items.append(lines)
 
     # Load images for Gemini
-    # Handle product image as uploaded file
-    if hasattr(product_image, 'read'):
-        # If it's a file-like object, read it
-        product_img = PIL.Image.open(product_image)
+    # Handle product image - can be a file path, None, or PIL Image
+    if product_image:
+        if isinstance(product_image, str):
+            # It's a file path
+            product_img = PIL.Image.open(product_image)
+        elif isinstance(product_image, PIL.Image.Image):
+            # It's already a PIL Image
+            product_img = product_image
+        else:
+            # Try to open it as a file-like object
+            product_img = PIL.Image.open(product_image)
     else:
-        # If it's already a PIL Image or path
-        product_img = product_image if isinstance(product_image, PIL.Image.Image) else PIL.Image.open(product_image)
+        # No product image provided, create a placeholder or skip
+        # For now, we'll create a simple placeholder image
+        product_img = PIL.Image.new('RGB', (512, 512), color='white')
     
     influencer_img = PIL.Image.open(influencer_image_path)
 

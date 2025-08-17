@@ -4,4 +4,10 @@ python-multipart==0.0.9
 openai==1.99.7
 google-genai==1.30.0
 pillow==11.1.0
+python-dotenv==1.0.0
+pyyaml==6.0.1
 upload_post 
+debugpy
+imageio==2.36.0
+moviepy==1.0.3
+ipython==8.31.0

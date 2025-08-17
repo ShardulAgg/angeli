@@ -6,8 +6,20 @@ services:
     container_name: angeli-backend
     ports:
       - "8005:8005"
+      - "5695:5678"  # debugpy port mapping
     volumes:
       - .:/app
+    env_file:
+      - .env
     environment:
       - PYTHONUNBUFFERED=1
-    command: uvicorn main:app --host 0.0.0.0 --port 8005 --reload
+      - PYTHONDONTWRITEBYTECODE=1
+      - DEBUGPY_ENABLED=true
+    command: python -m debugpy --listen 0.0.0.0:5678 -m uvicorn main:app --host 0.0.0.0 --port 8005 --reload
+    restart: unless-stopped
+    networks:
+      - angeli-network
+
+networks:
+  angeli-network:
+    driver: bridge
